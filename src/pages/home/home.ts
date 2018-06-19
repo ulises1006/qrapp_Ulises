@@ -41,6 +41,7 @@ ADR;TYPE=work:;;;
 EMAIL:clark@superman.com
 END:VCARD` ); 
        
+this._historialService.agregar_historial("MATMSG:TO: ulisesmc1006@gmail.com;SUB:Asunto del mensaje;BODY:Texto del email.;;" );
 }
 
 this.barcodeScanner.scan().then(barcodeData => {

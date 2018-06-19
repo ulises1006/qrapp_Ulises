@@ -18,7 +18,9 @@ import { MapaPage } from "../pages/mapa/mapa";
 export class HistorialService {
 
   private _historial:ScanData[] = [];
-
+  to: any;
+  subject: any;
+  body: any;
 
   constructor( private iab: InAppBrowser,
                private modalCtrl: ModalController,
@@ -82,7 +84,13 @@ export class HistorialService {
 
   }
   private crear_email(texto:string){
-    
+    let correo = texto.split(";");
+
+    this.to = correo[0].replace("MATMSG:TO:","");
+    this.subject = correo[1].replace("SUB:","");
+    this.body = correo[2].replace("BODY:","");
+
+    this.iab.create("mailto:"+this.to+"?subject="+this.subject+"&body="+this.body);
   }
 
   private crear_contacto( texto:string ){
